@@ -1,5 +1,10 @@
 version: '3.9'
 
+networks:
+  nestjs-rabbitmq-network:
+    name: nestjs-rabbitmq-network
+    driver: bridge
+
 services:
   nestjs-rabbitmq-consumer:
     build: .
@@ -11,7 +16,5 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - ${PWD}:/app
-    depends_on:
-      - rabbitmq
     networks:
       - nestjs-rabbitmq-network
