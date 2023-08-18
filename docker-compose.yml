@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  nestjs-rabbitmq-consumer:
+    build: .
+    container_name: nestjs-rabbitmq-consumer
+    image: nestjs-rabbitmq-consumer:latest
+    env_file:
+      - .env
+    environment:
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ${PWD}:/app
+    depends_on:
+      - rabbitmq
+    networks:
+      - nestjs-rabbitmq-network
